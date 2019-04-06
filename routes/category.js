@@ -99,7 +99,6 @@ router.post("/addSecondCategoryPic", function (req, res) {
 
             res.send({ "picAddr": '/upload/brand/' + picName });
 
-
         });
     });
 });

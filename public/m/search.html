@@ -15,7 +15,7 @@
   <!-- 4. 如果想使用swiper轮播图 因为swiper的css-->
   <link rel="stylesheet" href="./lib/swiper/css/swiper.css">
   <!-- 3. 引入自己的css文件 -->
-  <link rel="stylesheet" href="./less/category.css">
+  <link rel="stylesheet" href="./less/search.css">
 </head>
 
 <body>
@@ -24,33 +24,36 @@
       <a href="" class="fa fa-arrow-left"></a>
     </div>
     <div class="center">
-      <form action="">
-        <input type="search" placeholder="请输入要搜索的商品">
-      </form>
+      <h1>搜索中心</h1>
     </div>
     <div class="right">
-      <a href="./search.html" class="fa fa-search"></a>
     </div>
   </header>
 
   <main id="main">
-    <div class="category-left">
-      <div class="mui-scroll-wrapper">
-        <div class="mui-scroll">
-          <ul class="mui-table-view">
-
-          </ul>
-        </div>
+    <form action="#">
+      <input type="text" placeholder="请输入要搜索的商品" class="search-text">
+      <button class="mui-btn mui-btn-primary search-btn">搜索</button>
+    </form>
+    <div class="mui-card search-history">
+      <!--页眉，放置标题-->
+      <div class="mui-card-header">
+        <span class="left">搜索记录</span>
+        <span class="del-history fa fa-trash"> 清空记录</span>
       </div>
-    </div>
-    <div class="category-right">
-      <div class="mui-scroll-wrapper">
-        <div class="mui-scroll">
-          <div class="mui-row"></div>
+      <!--内容区-->
+      <div class="mui-card-content">
+        <div class="mui-scroll-wrapper">
+          <div class="mui-scroll">
+            <ul class="mui-table-view search-list">
+
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </main>
+
   <footer id="footer">
     <div class="mui-row">
       <div class="mui-col-xs-3">
@@ -60,7 +63,7 @@
         </a>
       </div>
       <div class="mui-col-xs-3">
-        <a href="./category.html" class="active">
+        <a href="./category.html">
           <i class="fa fa-bars"></i>
           <span>分类</span>
         </a>
@@ -81,23 +84,16 @@
 
   </footer>
 
-  <script type="text/html" id="tpl-left">
-    {{each rows v k}}
-      <li class="mui-table-view-cell category-left-list {{v.id==1?'active':''}}" data-id="{{v.id}}">{{v.categoryName}}</li>
-    {{/each}}
-  </script>
-  <script type="text/html" id="tpl-right">
-    {{if (rows.length>0)}}
-    {{each rows v k}}
-      <div class="mui-col-xs-4">
-        <a href="">
-          <img src="{{v.brandLogo}}" alt="">
-          <p>{{v.brandName}}</p>
-        </a>
-      </div>
+  <script type="text/html" id="tmp">
+    {{if(data.length>0)}}
+    {{each data v k}}
+    <li class="mui-table-view-cell">
+      {{v}}
+      <span class="mui-badge fa fa-close" data-index={{k}}></span>
+    </li>
     {{/each}}
     {{else}}
-      <p class="isNaN">此分类暂无资料! </p>
+    <li class="mui-table-view-cell">还没有搜索记录哦! </li>
     {{/if}}
   </script>
 
@@ -110,7 +106,7 @@
   <!-- 4. 引入swiper的js -->
   <script src="./lib/swiper/js/swiper.js"></script>
   <!-- 5. 引入自己的js -->
-  <script src="./js/category.js"></script>
+  <script src="./js/search.js"></script>
 </body>
 
 </html>

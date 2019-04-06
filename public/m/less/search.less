@@ -1,0 +1,65 @@
+@import 'base';
+
+#main {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+
+  form {
+    padding: .1rem;
+    display: flex;
+    height: 0.58rem;
+
+    input {
+      font-size: .14rem;
+      height: .38rem;
+      border-radius: .06rem 0 0 .06rem;
+      border-color: @main-color;
+      border-right-width: 0;
+      margin: 0;
+    }
+
+    button {
+      height: .38rem;
+      border-radius: 0 .06rem .06rem 0;
+      background-color: @main-color;
+      border-color: @main-color;
+      border-left-width: 0;
+    }
+  }
+
+  .search-history {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .mui-card-header {
+      font-size: .14rem;
+      height: 0.44rem;
+      .del-history {
+        color: #666;
+      }
+    }
+
+    .mui-card-content {
+      height: auto;
+      flex: 1;
+      .search-list {
+        li {
+          padding: .15rem;
+          &:after {
+            left: 0;
+          }
+        }
+        .mui-badge {
+          border-radius: .5rem;
+          text-align: center;
+          width: 0.24rem;
+          height: 0.24rem;
+          line-height: 0.18rem;
+        }
+      }
+    }
+  }
+}

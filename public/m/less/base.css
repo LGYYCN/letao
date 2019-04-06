@@ -24,6 +24,10 @@ img {
   background-color: #069;
   display: flex;
 }
+#header h1 {
+  text-align: center;
+  color: #fff;
+}
 #header .left,
 #header .right {
   width: .45rem;

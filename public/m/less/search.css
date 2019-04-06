@@ -75,63 +75,58 @@ img {
 #footer .mui-row a.active {
   color: orange;
 }
-#nav {
-  margin-top: .1rem;
-  padding: 0 .1rem;
-}
-#nav a {
-  display: block;
-}
-#nav a img {
-  width: 100%;
-}
-#banner {
-  margin-top: .1rem;
-  padding: 0 .1rem;
-}
-#banner a {
-  display: block;
-}
-#banner a img {
-  width: 100%;
-  height: 1.2rem;
-}
-#banner .mui-col-xs-4 img {
-  height: 2.4rem;
-}
-#brand {
-  margin-top: .1rem;
-  padding: 0 .1rem;
-}
-#brand a {
-  display: block;
-}
-#brand a img {
-  width: 100%;
-}
-#sport,
-#women,
-#man,
-#purchase {
-  padding: 0 .1rem;
-}
-#sport img,
-#women img,
-#man img,
-#purchase img {
-  width: 100%;
-}
-#sport .product,
-#women .product,
-#man .product,
-#purchase .product {
-  padding: .1rem .1rem .2rem;
-  text-align: center;
+#main {
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
 }
-#sport .product p,
-#women .product p,
-#man .product p,
-#purchase .product p {
-  padding: .05rem 0;
+#main form {
+  padding: .1rem;
+  display: flex;
+  height: 0.58rem;
+}
+#main form input {
+  font-size: .14rem;
+  height: .38rem;
+  border-radius: .06rem 0 0 .06rem;
+  border-color: #069;
+  border-right-width: 0;
+  margin: 0;
+}
+#main form button {
+  height: .38rem;
+  border-radius: 0 .06rem .06rem 0;
+  background-color: #069;
+  border-color: #069;
+  border-left-width: 0;
+}
+#main .search-history {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#main .search-history .mui-card-header {
+  font-size: .14rem;
+  height: 0.44rem;
+}
+#main .search-history .mui-card-header .del-history {
+  color: #666;
+}
+#main .search-history .mui-card-content {
+  height: auto;
+  flex: 1;
+}
+#main .search-history .mui-card-content .search-list li {
+  padding: .15rem;
+}
+#main .search-history .mui-card-content .search-list li:after {
+  left: 0;
+}
+#main .search-history .mui-card-content .search-list .mui-badge {
+  border-radius: .5rem;
+  text-align: center;
+  width: 0.24rem;
+  height: 0.24rem;
+  line-height: 0.18rem;
 }
