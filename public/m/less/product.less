@@ -1,0 +1,76 @@
+@import 'base';
+
+#main {
+  .mui-content {
+    background-color: #fff;
+  }
+  .product-box.mui-card {
+    box-shadow: none;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+
+    .filtrate {
+      min-height: 0.34rem;
+      padding: 0;
+      background-color: #eeeeee;
+      text-align: center;
+      display: flex;
+      justify-content: space-around;
+
+      a {
+        display: block;
+        width: 25%;
+        height: 0.34rem;
+        line-height: .34rem;
+        color: #666;
+        font-size: .14rem;
+
+        &.active {
+          color: red;
+        }
+      }
+
+    }
+
+    .product-list {
+      flex: 1;
+      .mui-col-xs-6 {
+        padding: 0 .05rem;
+        box-sizing: border-box;
+        margin: .1rem auto 0;
+
+        .product {
+          background-color: #fff;
+          height: 3.15rem;
+          padding: .1rem 0;
+          border: 1px solid #ddd;
+          text-align: center;
+
+          img {
+            width: 100%;
+          }
+
+          .product-name {
+            padding: 0 .05rem;
+            height: 0.42rem;
+            // white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            /*显示的个数 */
+            -webkit-line-clamp: 2;
+            /* 属性规定框的子元素应该被水平或垂直排列。 */
+            -webkit-box-orient: vertical;
+          }
+
+          .product-price {
+            margin: .1rem auto;
+          }
+        }
+      }
+    }
+  }
+}

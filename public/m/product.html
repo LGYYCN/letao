@@ -15,7 +15,7 @@
   <!-- 4. 如果想使用swiper轮播图 因为swiper的css-->
   <link rel="stylesheet" href="./lib/swiper/css/swiper.css">
   <!-- 3. 引入自己的css文件 -->
-  <link rel="stylesheet" href="./less/search.css">
+  <link rel="stylesheet" href="./less/product.css">
 </head>
 
 <body>
@@ -31,23 +31,26 @@
   </header>
 
   <main id="main">
-    <form action="#">
-      <input type="text" placeholder="请输入要搜索的商品" class="search-text">
-      <button class="mui-btn mui-btn-primary search-btn">搜索</button>
-    </form>
-    <div class="mui-card search-history">
-      <!--页眉，放置标题-->
-      <div class="mui-card-header">
-        <span class="left">搜索记录</span>
-        <span class="del-history fa fa-trash"> 清空记录</span>
-      </div>
-      <!--内容区-->
-      <div class="mui-card-content">
-        <div class="mui-scroll-wrapper">
-          <div class="mui-scroll">
-            <ul class="mui-table-view search-list">
-
-            </ul>
+    <!--下拉刷新容器-->
+    <div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+      <div class="mui-scroll">
+        <!--数据列表-->
+        <div class="search-header">
+          <form action="#">
+            <input type="text" placeholder="请输入要搜索的商品" class="search-text">
+            <button type="button" class="mui-btn mui-btn-primary search-btn">搜索</button>
+          </form>
+        </div>
+        <div class="mui-card product-box">
+          <div class="mui-card-header filtrate">
+            <a href="" class="active" data-type="updateTime"><span>上架时间</span><i class="fa fa-angle-down"></i></a>
+            <a href="" data-type="price" data-sort="2"><span>价格</span><i class="fa fa-angle-down"></i></a>
+            <a href="" data-type="num" data-sort="2"><span>销量</span><i class="fa fa-angle-down"></i></a>
+            <a href="" data-type="discount"><span>折扣</span><i class="fa fa-angle-down"></i></a>
+          </div>
+          <div class="mui-card-content product-list">
+            <div class="mui-row">
+            </div>
           </div>
         </div>
       </div>
@@ -81,19 +84,23 @@
         </a>
       </div>
     </div>
-
   </footer>
 
   <script type="text/html" id="tmp">
-    {{if(data.length>0)}}
+    {{if (data.length>0)}}
     {{each data v k}}
-    <li class="mui-table-view-cell">
-      {{v}}
-      <span class="mui-badge fa fa-close" data-index={{k}}></span>
-    </li>
+
+    <div class="mui-col-xs-6">
+      <div class="product">
+        <img src="{{v.pic[0].picAddr}}" alt="">
+        <p class="product-name">{{v.proName}}</p>
+        <p class="product-price"> <span>${{v.price}}</span> <del>${{v.oldPrice}}</del> </p>
+        <button class="mui-btn mui-btn-primary">立即购买</button>
+      </div>
+    </div>
     {{/each}}
     {{else}}
-    <li class="mui-table-view-cell">还没有搜索记录哦! </li>
+    <p>查无资料! </p>
     {{/if}}
   </script>
 
@@ -106,7 +113,7 @@
   <!-- 4. 引入swiper的js -->
   <script src="./lib/swiper/js/swiper.js"></script>
   <!-- 5. 引入自己的js -->
-  <script src="./js/search.js"></script>
+  <script src="./js/product.js"></script>
 </body>
 
 </html>

@@ -54,11 +54,6 @@ img {
   flex: 1;
   position: relative;
   background: #fff;
-  height: 100%;
-}
-#main .mui-scroll-wrapper {
-  position: relative;
-  height: 100%;
 }
 #main .search-header {
   padding: .1rem;
@@ -101,37 +96,65 @@ img {
 #footer .mui-row a.active {
   color: orange;
 }
-#main {
-  display: flex;
-  flex-direction: column;
+#main .mui-content {
+  background-color: #fff;
 }
-#main .search-history {
+#main .product-box.mui-card {
+  box-shadow: none;
+  margin: 0;
   flex: 1;
-  height: 100%;
   display: flex;
   flex-direction: column;
-}
-#main .search-history .mui-card-header {
-  font-size: .14rem;
-  height: 0.44rem;
-}
-#main .search-history .mui-card-header .del-history {
-  color: #666;
-}
-#main .search-history .mui-card-content {
   height: auto;
+}
+#main .product-box.mui-card .filtrate {
+  min-height: 0.34rem;
+  padding: 0;
+  background-color: #eeeeee;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+#main .product-box.mui-card .filtrate a {
+  display: block;
+  width: 25%;
+  height: 0.34rem;
+  line-height: .34rem;
+  color: #666;
+  font-size: .14rem;
+}
+#main .product-box.mui-card .filtrate a.active {
+  color: red;
+}
+#main .product-box.mui-card .product-list {
   flex: 1;
 }
-#main .search-history .mui-card-content .search-list li {
-  padding: .15rem;
+#main .product-box.mui-card .product-list .mui-col-xs-6 {
+  padding: 0 .05rem;
+  box-sizing: border-box;
+  margin: .1rem auto 0;
 }
-#main .search-history .mui-card-content .search-list li:after {
-  left: 0;
-}
-#main .search-history .mui-card-content .search-list .mui-badge {
-  border-radius: .5rem;
+#main .product-box.mui-card .product-list .mui-col-xs-6 .product {
+  background-color: #fff;
+  height: 3.15rem;
+  padding: .1rem 0;
+  border: 1px solid #ddd;
   text-align: center;
-  width: 0.24rem;
-  height: 0.24rem;
-  line-height: 0.18rem;
+}
+#main .product-box.mui-card .product-list .mui-col-xs-6 .product img {
+  width: 100%;
+}
+#main .product-box.mui-card .product-list .mui-col-xs-6 .product .product-name {
+  padding: 0 .05rem;
+  height: 0.42rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /*显示的个数 */
+  -webkit-line-clamp: 2;
+  /* 属性规定框的子元素应该被水平或垂直排列。 */
+  -webkit-box-orient: vertical;
+}
+#main .product-box.mui-card .product-list .mui-col-xs-6 .product .product-price {
+  margin: .1rem auto;
 }

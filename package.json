@@ -20,5 +20,7 @@
     "node-uuid": "*",
     "serve-favicon": "~2.3.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/core": "^7.4.3"
+  }
 }

@@ -1,6 +1,18 @@
 @main-color: #069;
 @t-color: #fe5500;
 
+.text-hide(@num) {
+  @if @num=1
+  // white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /*显示的个数 */
+  -webkit-line-clamp: @num;
+  /* 属性规定框的子元素应该被水平或垂直排列。 */
+  -webkit-box-orient: vertical;
+}
+
 // 做屏幕适配, 需要设置 html 的根元素
 html {
   font-size: 26.66667vw;
@@ -27,22 +39,27 @@ h6 {
 img {
   vertical-align: middle;
 }
+
 #header {
   background-color: @main-color;
   display: flex;
+
   h1 {
     text-align: center;
     color: #fff;
   }
-  .left,.right {
+
+  .left,
+  .right {
     width: .45rem;
     height: .45rem;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #f5f5f5;
+
     a {
-        color: #f5f5f5;
+      color: #f5f5f5;
     }
   }
 
@@ -50,27 +67,55 @@ img {
     flex: 1;
 
     h1 {
-      font-size: .24rem;
+      font-size: .2rem;
       height: 100%;
       line-height: .45rem;
       font-weight: 200;
     }
   }
 
-//   .right {
-//     width: .45rem;
-//     height: .45rem;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//   }
+  //   .right {
+  //     width: .45rem;
+  //     height: .45rem;
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //   }
 }
 
 #main {
   flex: 1;
-  height: 100%;
-  overflow: hidden;
   position: relative;
+  background: #fff;
+  .mui-scroll-wrapper{
+    position: relative;
+    height: 100%;
+  }
+  .search-header {
+    padding: .1rem;
+    height: 0.58rem;
+
+    form {
+      display: flex;
+    }
+
+    input {
+      font-size: .14rem;
+      height: .38rem;
+      border-radius: .06rem 0 0 .06rem;
+      border-color: @main-color;
+      border-right-width: 0;
+      margin: 0;
+    }
+
+    button {
+      height: .38rem;
+      border-radius: 0 .06rem .06rem 0;
+      background-color: @main-color;
+      border-color: @main-color;
+      border-left-width: 0;
+    }
+  }
 }
 
 #footer {

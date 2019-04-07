@@ -81,23 +81,25 @@
 
   </footer>
 
+
   <script type="text/html" id="tpl-left">
     {{each rows v k}}
-      <li class="mui-table-view-cell category-left-list {{v.id==1?'active':''}}" data-id="{{v.id}}">{{v.categoryName}}</li>
+    <li class="mui-table-view-cell category-left-list {{v.id==1?'active':''}}" data-id="{{v.id}}">{{v.categoryName}}
+    </li>
     {{/each}}
   </script>
   <script type="text/html" id="tpl-right">
     {{if (rows.length>0)}}
     {{each rows v k}}
-      <div class="mui-col-xs-4">
-        <a href="">
-          <img src="{{v.brandLogo}}" alt="">
-          <p>{{v.brandName}}</p>
-        </a>
-      </div>
+    <div class="mui-col-xs-4">
+      <a href="">
+        <img src="{{v.brandLogo}}" alt="">
+        <p>{{v.brandName}}</p>
+      </a>
+    </div>
     {{/each}}
     {{else}}
-      <p class="isNaN">此分类暂无资料! </p>
+    <p class="isNaN">此分类暂无资料! </p>
     {{/if}}
   </script>
 
