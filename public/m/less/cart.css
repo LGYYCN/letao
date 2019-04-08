@@ -98,3 +98,28 @@ img {
 #footer .mui-row a.active {
   color: orange;
 }
+#main .mui-pull-left {
+  display: flex;
+  flex-direction: column;
+  width: 0.8rem;
+  height: 1rem;
+}
+#main .mui-pull-left .mui-checkbox {
+  position: relative;
+  width: 100%;
+  height: .24rem;
+}
+#main .mui-pull-left .mui-checkbox input {
+  text-align: center;
+}
+#main .mui-pull-left .mui-checkbox input::before {
+  font-size: .24rem ;
+  color: #ff74b9;
+}
+#order {
+  border-top: 1px solid #ccc;
+}
+#order button {
+  right: 0;
+  height: 0.43rem;
+}

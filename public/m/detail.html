@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- 1. 设置视口 -->
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>LeTao - Mine</title>
+  <!-- 1. 引入MUI的CSS文件 使用这个没有压缩 mui.css带了rem单位 -->
+  <link rel="stylesheet" href="./lib/mui/css/mui.css">
+  <!-- 2. 引入fontawesome字体图标库的css文件 提供页面中字体图标-->
+  <link rel="stylesheet" href="./lib/fontAwesome/css/font-awesome.css">
+  <!-- 4. 如果想使用swiper轮播图 因为swiper的css-->
+  <link rel="stylesheet" href="./lib/swiper/css/swiper.css">
+  <!-- 3. 引入自己的css文件 -->
+  <link rel="stylesheet" href="./less/detail.css">
+</head>
+
+<body>
+  <header id="header">
+    <div class="left">
+      <a href="" class="fa fa-arrow-left"></a>
+    </div>
+    <div class="center">
+      <h1>商品详情</h1>
+    </div>
+    <div class="right">
+      <a href="./search.html" class="fa fa-search"></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="mui-scroll-wrapper">
+      <div class="mui-scroll">
+
+        <section id="slider" class="mui-slider">
+        </section>
+
+        <section class="product-info">
+        </section>
+
+      </div>
+    </div>
+  </main>
+  <footer id="footer">
+    <div class="mui-row">
+      <div class="mui-col-xs-2">
+        <a href="javascript:void(0)" class="fa fa-shopping-cart"></a>
+      </div>
+      <div class="mui-col-xs-5">
+        <a href="javascript:void(0)">
+          <button type="button" class="mui-btn mui-btn-danger add-product">加入购物车</button>
+        </a>
+      </div>
+      <div class="mui-col-xs-5">
+        <a href="javascript:void(0)">
+          <button type="button" class="mui-btn mui-btn-warning">立即购买</button>
+        </a>
+      </div>
+    </div>
+
+  </footer>
+
+  <script type="text/html" id="tmp-slider">
+    <div class="mui-slider-group mui-slider-loop">
+      <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+      <div class="mui-slider-item mui-slider-item-duplicate">
+        <a href="#">
+          <img src="{{list[list.length-1].picAddr}}">
+        </a>
+      </div>
+      <!-- 第一张 -->
+      {{each list v k}}
+      <div class="mui-slider-item">
+        <a href="#">
+          <img src="{{v.picAddr}}">
+        </a>
+      </div>
+      {{/each}}
+      <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+      <div class="mui-slider-item mui-slider-item-duplicate">
+        <a href="#">
+          <img src="{{list[0].picAddr}}">
+        </a>
+      </div>
+    </div>
+    <div class="mui-slider-indicator">
+      {{each list v k}}
+      <div class="mui-indicator {{k==0?'mui-active':''}}"></div>
+      {{/each}}
+    </div>
+  </script>
+
+  <script type="text/html" id="tmp-info">
+    <ul class="mui-table-view">
+      <li class="mui-table-view-cell product-name">
+        名称: <strong>{{proName}}</strong>
+      </li>
+      <li class="mui-table-view-cell product-price">
+        价格:
+        <span class="new-price">${{price}}</span>
+        <del class="old-price">${{oldPrice}}</del>
+      </li>
+      <li class="mui-table-view-cell product-size">
+        <div>
+          尺码:
+          {{each size v k}}
+          <button type="button" class="mui-btn-default">{{v}}</button>
+          {{/each}}
+        </div>
+      </li>
+      <li class="mui-table-view-cell product-num">
+        数量:
+        <div class="mui-numbox" data-numbox-step='1' data-numbox-min='1' data-numbox-max='{{num}}'>
+          <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+          <input class="mui-numbox-input" type="number" />
+          <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+        </div>
+        <span>剩余: {{num}}件</span>
+      </li>
+    </ul>
+  </script>
+
+  <!-- 1. 引入MUI的js文件 -->
+  <script src="./lib/mui/js/mui.js"></script>
+  <!-- 2. 引入zepto 获取元素 发送请求 和jq一样的功能适用移动端-->
+  <script src="./lib/zepto/zepto.min.js"></script>
+  <!-- 3. 有请求使用到模板 引入模板引擎 template-web.js-->
+  <script src="./lib/artTemplate/template-web.js"></script>
+  <!-- 4. 引入swiper的js -->
+  <script src="./lib/swiper/js/swiper.js"></script>
+  <!-- 5. 引入自己的js -->
+  <script src="./js/detail.js"></script>
+</body>
+
+</html>

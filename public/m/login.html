@@ -15,7 +15,7 @@
   <!-- 4. 如果想使用swiper轮播图 因为swiper的css-->
   <link rel="stylesheet" href="./lib/swiper/css/swiper.css">
   <!-- 3. 引入自己的css文件 -->
-  <link rel="stylesheet" href="./less/product.css">
+  <link rel="stylesheet" href="./less/login.css">
 </head>
 
 <body>
@@ -24,39 +24,29 @@
       <a href="" class="fa fa-arrow-left"></a>
     </div>
     <div class="center">
-      <h1>商品列表</h1>
+      <h1>登录</h1>
     </div>
     <div class="right">
+      <a href="./search.html" class="fa fa-search"></a>
     </div>
   </header>
 
   <main id="main">
-    <!--下拉刷新容器-->
-    <div id="refreshContainer" class="mui-content mui-scroll-wrapper">
-      <div class="mui-scroll">
-        <!--数据列表-->
-        <div class="search-header">
-          <form action="#">
-            <input type="text" placeholder="请输入要搜索的商品" class="search-text">
-            <button type="button" class="mui-btn mui-btn-primary search-btn">搜索</button>
-          </form>
-        </div>
-        <div class="mui-card product-box">
-          <div class="mui-card-header filtrate">
-            <a href="" class="active" data-type="updateTime"><span>上架时间</span><i class="fa fa-angle-down"></i></a>
-            <a href="" data-type="price" data-sort="2"><span>价格</span><i class="fa fa-angle-down"></i></a>
-            <a href="" data-type="num" data-sort="2"><span>销量</span><i class="fa fa-angle-down"></i></a>
-            <a href="" data-type="discount"><span>折扣</span><i class="fa fa-angle-down"></i></a>
-          </div>
-          <div class="mui-card-content product-list">
-            <div class="mui-row">
-            </div>
-          </div>
-        </div>
+    <form class="mui-input-group">
+      <div class="mui-input-row">
+        <label>用户名</label>
+        <input type="text" class="mui-input-clear userName" placeholder="请输入用户名">
       </div>
-    </div>
+      <div class="mui-input-row">
+        <label>密码</label>
+        <input type="password" class="mui-input-password password" placeholder="请输入密码">
+      </div>
+      <div class="mui-button-row">
+        <button type="button" class="mui-btn mui-btn-primary">登录</button>
+        <button type="button" class="mui-btn mui-btn-danger">免费注册</button>
+      </div>
+    </form>
   </main>
-
   <footer id="footer">
     <div class="mui-row">
       <div class="mui-col-xs-3">
@@ -84,26 +74,8 @@
         </a>
       </div>
     </div>
+
   </footer>
-
-  <script type="text/html" id="tmp">
-    {{if (data.length>0)}}
-    {{each data v k}}
-
-    <div class="mui-col-xs-6">
-      <div class="product">
-        <img src="{{v.pic[0].picAddr}}" alt="">
-        <p class="product-name">{{v.proName}}</p>
-        <p class="product-price"> <span>${{v.price}}</span> <del>${{v.oldPrice}}</del> </p>
-        <button type="button" class="mui-btn mui-btn-primary" data-id="{{v.id}}">立即购买</button>
-      </div>
-    </div>
-    {{/each}}
-    {{else}}
-    <p>查无资料! </p>
-    {{/if}}
-  </script>
-
   <!-- 1. 引入MUI的js文件 -->
   <script src="./lib/mui/js/mui.js"></script>
   <!-- 2. 引入zepto 获取元素 发送请求 和jq一样的功能适用移动端-->
@@ -113,7 +85,7 @@
   <!-- 4. 引入swiper的js -->
   <script src="./lib/swiper/js/swiper.js"></script>
   <!-- 5. 引入自己的js -->
-  <script src="./js/product.js"></script>
+  <script src="./js/login.js"></script>
 </body>
 
 </html>

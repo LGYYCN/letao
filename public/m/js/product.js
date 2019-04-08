@@ -3,7 +3,7 @@ $(function () {
     deceleration: 0.0005
   });
   var page = 1;
-  var pageSize = 10;
+  var pageSize = 2;
   // 使用正则匹配url参数 返回这个匹配成功的值 根据参数名获取参数的值
   function getQueryString(name) {
     var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
@@ -59,6 +59,10 @@ $(function () {
     getProduct(data)
   })
 
+  $('.mui-row').on('click','.mui-btn', function () {
+    location.href = 'detail.html?id=' + $(this).data('id')
+  })
+
   mui.init({
     pullRefresh: {
       container: '#refreshContainer',
@@ -75,8 +79,13 @@ $(function () {
    * 下拉刷新具体业务实现
    */
   function pulldownRefresh() {
-    setTimeout(function() {
+    setTimeout(function () {
+      page = 1
+      getProduct({
+        proName
+      })
       mui('#refreshContainer').pullRefresh().endPulldownToRefresh(); //refresh completed
+      mui('#refreshContainer').pullRefresh().refresh(true)
     }, 1500);
   }
   var count = 0;
@@ -84,20 +93,38 @@ $(function () {
    * 上拉加载具体业务实现
    */
   function pullupRefresh() {
-    setTimeout(function() {
-      mui('#refreshContainer').pullRefresh().endPullupToRefresh(); //参数为true代表没有更多数据了。
+    setTimeout(function () {
+      page++
+      $.ajax({
+        url: '/product/queryProduct',
+        data: {
+          proName: proName,
+          page: page,
+          pageSize: pageSize,
+        },
+        success: function (res) {
+          if (res.data.length > 0) {
+            var tmp = template('tmp', res)
+            $('.product-list .mui-row').append(tmp)
+            $('.search-header .search-text').val(proName)
+            mui('#refreshContainer').pullRefresh().endPullupToRefresh(); //参数为true代表没有更多数据了。
+          } else {
+            mui('#refreshContainer').pullRefresh().endPullupToRefresh(true); //参数为true代表没有更多数据了。
+          }
+        }
+      })
     }, 1500);
   }
-  if (mui.os.plus) {
-    mui.plusReady(function() {
-      setTimeout(function() {
-        mui('#pullrefresh').pullRefresh().pullupLoading();
-      }, 1000);
+  // if (mui.os.plus) {
+  //   mui.plusReady(function() {
+  //     setTimeout(function() {
+  //       mui('#refreshContainer').pullRefresh().pullupLoading();
+  //     }, 1000);
 
-    });
-  } else {
-    mui.ready(function() {
-      mui('#pullrefresh').pullRefresh().pullupLoading();
-    });
-  }
+  //   });
+  // } else {
+  //   mui.ready(function() {
+  //     mui('#refreshContainer').pullRefresh().pullupLoading();
+  //   });
+  // }
 })
